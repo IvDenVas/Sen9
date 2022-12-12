@@ -3,21 +3,21 @@
 // M = 4; N = 8 -> "4, 6, 7, 8"
 
 Console.Clear();
-int userInputM = UserInput("Введите целое число M: ", "Ошибка ввода!");
-int userInputN = UserInput("Введите целое число N: ", "Ошибка ввода!");
-int start = userInputM + 1;
+int m = UserInput("Введите целое число M: ", "Ошибка ввода!");
+int n = UserInputTwo("Введите целое число N: ", "Ошибка ввода!");
+int start = m;
 
-string result = Numbers(start, userInputM, userInputN);
+string result = Numbers(start, n);
 
 Console.WriteLine(result);
 
-string Numbers(int start, int n, int m)
+string Numbers(int start, int n)
 {
     if (start == n) 
         return start.ToString();
-    if (start == m)
-        return start.ToString();
-    return start + " " + Numbers(start + 1, n, m);
+    // if (start == m)
+    //     return start.ToString();
+    return start + " " + Numbers(start + 1, n);
 }
 
 
@@ -28,6 +28,18 @@ int UserInput (string message, string errorMessage)
         Console.Write(message);
         if(int.TryParse(Console.ReadLine(), out int num))
         if (num > 0)
+            return num;
+        Console.WriteLine(errorMessage);
+    }
+}
+
+int UserInputTwo (string message, string errorMessage)
+{
+    while(true)
+    {
+        Console.Write(message);
+        if(int.TryParse(Console.ReadLine(), out int num))
+        if (num > m)
             return num;
         Console.WriteLine(errorMessage);
     }
